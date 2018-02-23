@@ -1,0 +1,122 @@
+<!Doctype html>
+<html>
+<head>
+  <title>Codes Names Duo</title>
+  <!--link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet">
+  <script src="https://use.fontawsome.com/939e9dd52c.js"> </script>
+  <link rel="stylesheet" href="style.css" /-->
+	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+	<style>
+  	h1{
+  	  margin-top:40px;
+  	  margin-bottom:10px;
+  		line-height: 40px;
+  		padding-bottom: 20px;
+  	}
+    table {
+      border-collapse: collapse;
+      width: 700px;
+    }
+
+    th, td {
+      padding: 20px;
+      text-align: center;
+    }th {
+      background-color: #537AB9;
+      color: white;
+    }
+    h1{
+      color: #164085;
+    }
+	body {
+		margin: 25px;
+	}
+	div.alert{
+    	color: #F03104;
+    	font-weight: bold;
+	}
+	.error {
+	border:2px solid red;
+	}
+	.grid-container {
+		display: grid;
+		grid-template-columns: repeat(5, [col-start] 1fr);
+		width:	90%;
+		grid-gap: 10px;
+	}
+	button{
+		width: 90%;
+	}
+	ul {
+		list-style-type: none;
+	}
+	</style>
+</head>
+<body>
+  <div class="mainDiv" align="center">
+    <h1>Code Names Duo</h1>
+    <div id="board" style="display: none;">
+    	<!-- <div id="indicesLeft"> </div> indices restants.
+    	<br><br> -->
+    <div class="grid-container" >
+	  <div class="grid-item"><button type="button" class="word" id=00 onclick="checkWord('00')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=01 onclick="checkWord('01')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=02 onclick="checkWord('02')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=03 onclick="checkWord('03')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=04 onclick="checkWord('04')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=10 onclick="checkWord('10')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=11 onclick="checkWord('11')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=12 onclick="checkWord('12')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=13 onclick="checkWord('13')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=14 onclick="checkWord('14')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=20 onclick="checkWord('20')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=21 onclick="checkWord('21')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=22 onclick="checkWord('22')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=23 onclick="checkWord('23')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=24 onclick="checkWord('24')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=30 onclick="checkWord('30')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=31 onclick="checkWord('31')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=32 onclick="checkWord('32')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=33 onclick="checkWord('33')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=34 onclick="checkWord('34')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=40 onclick="checkWord('40')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=41 onclick="checkWord('41')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=42 onclick="checkWord('42')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=43 onclick="checkWord('43')"></button></div>
+	  <div class="grid-item"><button type="button" class="word" id=44 onclick="checkWord('44')"></button></div>
+	</div>
+	<br>
+	<br>
+	Indice: 	<input type="text" name="indice" id="clue">  <button type="submit" onclick="sendClue()" id="sendClue" style="width:80px">Envoyer</button>
+	<!-- <br>
+	<br>
+	<center><input type="submit" onclick="updateClues()" value="Update"></center> -->
+	</div>
+	<center><input type="submit" onclick="startGame()" value="startGame" id="starButton"></center>
+	<br>
+	<!-- <ul id="cluelist">
+	</ul> -->
+	<div id="cluelist">
+	</div>
+	<br>
+	<center>
+		<input type="submit" onclick="callPopup()" value="Reset">
+	</center>
+	</div>
+	<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+	<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC9X_me8qNVOHRoeJINHyJduhWDVJa2WIo",
+    authDomain: "datacollection-2f3de.firebaseapp.com",
+    databaseURL: "https://datacollection-2f3de.firebaseio.com",
+    projectId: "datacollection-2f3de",
+    storageBucket: "datacollection-2f3de.appspot.com",
+    messagingSenderId: "608271042127"
+  };
+  firebase.initializeApp(config);
+</script>
+	<script src="scripts.js"></script>
+
+</dody>
+</html>
