@@ -8,6 +8,14 @@ colorsDict = {
 	'darkgreen': "#066A01",
 	'lost': '#020202',
 }
+colorsHelpDict = {
+	'green': 'Mot vert à faire deviner à votre partenaire.',
+	'black': 'Mot noir. Si votre partenaire sur ces mots, vous perdez.',
+	'yellow': 'Mot neutre. ',
+	'darkgreen': 'Ce mot a correctement été deviné.',
+	'lost': 'Vous avez cliqué ou votre partenaire a cliqué sur un mot noir. Vous avvez perdu.',
+	'X': "Vous avez déjà proposé ce mot. Il n'est pas dans les mots que votre partenaire doit vous faire deviner."
+}
 // green = "#83F889";
 // black = "#B3B3B3";
 // yellow = "#FCFCCD";
@@ -36,6 +44,36 @@ var clues = {};
 // firebase.database().ref().update(updates);
 
 // console.log(gameval)
+function help(){
+	var helpdiv = document.getElementById('helpdiv');
+	var i = 0;
+	for (key in colorsHelpDict){
+		var button = document.createElement('button');
+		if (key!='X') {
+			button.innerHTML="MOT";
+			button.style.background = colorsDict[key];
+		}
+		else button.innerHTML= "X - MOT - X";
+		var divbutton = document.createElement('div');
+		// divbutton.setAttribute("class","grid-item");
+		divbutton.appendChild(button);
+		var divtxt = document.createElement('div');
+		divtxt.setAttribute("class","grid-item");
+		divtxt.innerText = colorsHelpDict[key];
+		helpdiv.appendChild(divbutton);
+		helpdiv.appendChild(divtxt);
+		// var cell = document.createElement('td');
+		// cell.setAttribute("width","25%")
+		// cell.appendChild(button);
+		// line.appendChild(cell);
+		// cell = document.createElement('td');
+		// cell.innerText = colorsHelpDict[key];
+		// line.appendChild(cell);
+		// line.setAttribute("class","spaceUnder");
+		// helpdiv.appendChild(line);
+		i++;
+	}
+}
 
 function callPopup() {
     var popup = document.getElementById("myPopup");
@@ -232,7 +270,7 @@ function initGameplayer1(wordsDict){
 			words_player[0].push(key);
 			if (colors[1] == "green") common_words.push(key);
 		}
-		if (colors[1] == "green") words_player[0].push(key);
+		if (colors[1] == "green") words_player[1].push(key);
 		if (colors[0] == "black") blackwords_player[0].push(key);
 		if (colors[1] == "black") blackwords_player[1].push(key);
 	}
