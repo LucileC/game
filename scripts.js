@@ -3,7 +3,7 @@ words_caps = ["ACCIDENT", "ACHAT", "ACNE", "ACTION", "ADOLESCENT", "AFRIQUE", "A
 
 colorsDict = {
 	'green': "#83F889",
-	'black': "#B3B3B3",
+	'black': "#f94d4d",//"#B3B3B3",
 	'yellow': "#FCFCCD",
 	'darkgreen': "#066A01",
 	'lost': '#020202',
