@@ -10,11 +10,12 @@ colorsDict = {
 }
 colorsHelpDict = {
 	'green': 'Mot vert à faire deviner à votre partenaire.',
-	'black': 'Mot noir. Si votre partenaire sur ces mots, vous perdez.',
+	'black': 'Mot noir. Si votre partenaire clique sur ces mots, vous perdez.',
 	'yellow': 'Mot neutre. ',
 	'darkgreen': 'Ce mot a correctement été deviné.',
 	'lost': 'Vous avez cliqué ou votre partenaire a cliqué sur un mot noir. Vous avvez perdu.',
-	'X': "Vous avez déjà proposé ce mot. Il n'est pas dans les mots que votre partenaire doit vous faire deviner."
+	'X': "Vous avez déjà proposé ce mot. Il n'est pas dans les mots que votre partenaire doit vous faire deviner.",
+	'Y': "Votre partenaire a proposé ce mot.",
 }
 // green = "#83F889";
 // black = "#B3B3B3";
@@ -24,6 +25,7 @@ var indicesLeftNb = 9;
 
 
 var player = -1;
+var opponent = -1;
 var wordsDict = {};
 
 var words_25 = [];
@@ -34,6 +36,7 @@ words_player[1] = [];
 var blackwords_player = {};
 blackwords_player[0] = [];
 blackwords_player[1] = [];
+var wordsToButtons = {};
 // var words_player0 = [];
 // var words_player1 = [];
 // var blackwords_player0 = [];
@@ -49,11 +52,12 @@ function help(){
 	var i = 0;
 	for (key in colorsHelpDict){
 		var button = document.createElement('button');
-		if (key!='X') {
+		if (key!='X' &&  key!='Y') {
 			button.innerHTML="MOT";
 			button.style.background = colorsDict[key];
 		}
-		else button.innerHTML= "X - MOT - X";
+		else if (key=='X') button.innerHTML= "X - MOT - X";
+		else if (key=='Y') button.innerHTML= "Y - MOT - Y";
 		var divbutton = document.createElement('div');
 		// divbutton.setAttribute("class","grid-item");
 		divbutton.appendChild(button);
@@ -84,7 +88,7 @@ function callPopup(){
 	if (confirm("Etes vous sur de vouloir arreter la partie ?")) reset();
 }
 
-function reset(){
+function resetFirebase(callback){
 	updateGame = {};
 	updateGame['game'] = null;
 	firebase.database().ref().update(updateGame);	
@@ -92,7 +96,18 @@ function reset(){
 	updateGame['game/on'] = 0;
 	updateGame['game/nbClues'] = 0;
 	firebase.database().ref().update(updateGame);	
+	callback();
+}
+
+function reload(){	
 	location.reload();
+}
+
+function reset(){
+	console.log('in reset!')
+	resetFirebase(function(){
+		reload();
+	})
 }
 
 function update(){
@@ -102,8 +117,12 @@ function update(){
 	});
 }
 
+function test(){
+	console.log("test");
+}
+
 function startGame(){	
-	var _ = window.setInterval(updateClues, 2000);
+	var _ = window.setInterval(updateBoard, 2000);
 
 	firebase.database().ref('game/on').once('value').then(function(snapshot) {
 		var gameval = snapshot.val();
@@ -114,6 +133,7 @@ function startGame(){
 		starButton.style.display = "none";
 		if (gameval==0){
 			player = 0;
+			opponent = 1;
 			wordsDict = initGamePlayer0();	
 			var updateOn = {};
 			updateOn['game/on'] = 1;
@@ -127,6 +147,7 @@ function startGame(){
 		else{
 			var count = 0;
 			player = 1;
+			opponent = 0;
 			firebase.database().ref('game/words').once('value').then(function(snapshot){
 				snapshot.forEach(function(child){
 					if (child.key != "on") {
@@ -185,7 +206,7 @@ function arr_diff(a1, a2) {
 }
 
 function displayWords(wordlist){
-	var wordsToButtons = {};
+	wordsToButtons = {};
 	for (i=0;i<5;i++){
 		for (j=0;j<5;j++){
 			button = document.getElementById(i.toString()+j.toString());
@@ -217,10 +238,6 @@ function include(array,value){
 		if (elt == value) bool =  true;
 	})
 	return bool;
-}
-
-function updateIndicesLeft(){
-	indicesLeftElt.innerHTML = indicesLeftNb;
 }
 
 function initGamePlayer0(){
@@ -303,8 +320,8 @@ function displayClues(nbClues,cluesDict,nbNewClues){
 	}
 }
 
-function updateClues(){	
-	// console.log("In updateClues");
+function updateBoard(){	
+	console.log("In updateBoard");
 	var nbDisplayedClues = document.getElementById("cluelist").childElementCount;
 	// console.log("nbOlClues = "+nbDisplayedClues)
 	firebase.database().ref('game/nbClues').once('value').then(function(snapshot) {
@@ -321,6 +338,33 @@ function updateClues(){
 			})
 		}
 	})
+	firebase.database().ref('game/words').once('value').then(function(snapshot){
+		snapshot.forEach(function(child){
+			var w = child.key;
+			// console.log(w);
+			var val = child.val();
+			var elts = val.split(',');
+			// console.log(elts);
+			// console.log(player);
+			updateWordStatusSelf(w,elts[2+player]);
+			if (elts[2+opponent] == 'tried') updateWordStatusOpponent(w,'tried');
+		})
+	})
+}
+
+function updateWordStatusSelf(w,status){
+	// console.log("update "+w+" to "+status);
+	var button = wordsToButtons[w];
+
+	if (status == "guessed") button.style.background = colorsDict["darkgreen"];
+	else if (status == "lost") button.style.background = colorsDict['lost'];
+	else if (status == "tried") button.innerHTML = "X - "+w+" - X" ;
+}
+
+function updateWordStatusOpponent(w,status){
+	// console.log("update "+w+" to "+status);
+	var button = wordsToButtons[w];
+	button.innerHTML = "Y - "+w+" - Y" ;
 }
 
 function sendClue(){
@@ -335,18 +379,57 @@ function sendClue(){
 		var updateGame = {};
 		updateGame['game/clues/'+(nbClues-1)] = clue;
 		updateGame['game/nbClues'] = nbClues;
-		firebase.database().ref().update(updateGame).then(updateClues());
+		firebase.database().ref().update(updateGame).then(updateBoard());
 	})
+}
+
+function getWordStatus(w,callback){
+	if (words_player[opponent].indexOf(w) != -1) s = 'guessed';
+	else if (blackwords_player[opponent].indexOf(w) != -1) s = 'lost';
+	else s = 'tried';
+	callback(s)
 }
 
 function checkWord(id){
 	var button = document.getElementById(id);
 	var w = button.innerHTML;
-	// console.log(w);
-	var opponent = Math.abs(player-1);
-	console.log(words_player[opponent]);
-	console.log(blackwords_player[opponent]);
-	if (words_player[opponent].indexOf(w) != -1) button.style.background = colorsDict["darkgreen"];
-	else if (blackwords_player[opponent].indexOf(w) != -1) button.style.background = colorsDict['lost'];
-	else button.innerHTML = "X - "+w+" - X";
+	getWordStatus(w, function(){
+		updateFirebase();
+	});
+}
+
+function updateFirebase(w,s){
+	firebase.database().ref('game/words/'+w).once('value').then(function(snapshot) {
+		var word_status = snapshot.val();
+		console.log(w);
+		console.log(word_status);
+		console.log(s);
+		var elts = word_status.split(",");
+		var update = '';
+		var updates = {};
+		if (elts.length == 2){
+			if (player == 0) {
+				update = word_status + ','+ s;
+				updates['game/words/'+w] = update;	
+				firebase.database().ref().update(updates);	
+			}
+			else {
+				update = word_status+ ', ,'+ getWordStatus + s;
+				updates['game/words/'+w] = update;	
+				firebase.database().ref().update(updates);	
+			}
+		}
+		else{
+			if (player==0) {
+				update = elts[0] +','+ elts[1] +',' + s + ','+elts[3];
+				updates['game/words/'+w] = update;	
+				firebase.database().ref().update(updates);	
+			}
+			else {
+				update = elts[0] +','+ elts[1] + ','+elts[2] +',' + s;
+				updates['game/words/'+w] = update;	
+				firebase.database().ref().update(updates);	
+			}
+		}
+	})
 }
