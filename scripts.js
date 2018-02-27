@@ -383,22 +383,18 @@ function sendClue(){
 	})
 }
 
-function getWordStatus(w,callback){
-	if (words_player[opponent].indexOf(w) != -1) s = 'guessed';
-	else if (blackwords_player[opponent].indexOf(w) != -1) s = 'lost';
-	else s = 'tried';
-	callback(s)
-}
-
 function checkWord(id){
 	var button = document.getElementById(id);
 	var w = button.innerHTML;
-	getWordStatus(w, function(){
-		updateFirebase();
-	});
+	updateFirebaseGivenWordStatus(w);
 }
 
-function updateFirebase(w,s){
+
+function updateFirebaseGivenWordStatus(w){
+	var s;
+	if (words_player[opponent].indexOf(w) != -1) s = 'guessed';
+	else if (blackwords_player[opponent].indexOf(w) != -1) s = 'lost';
+	else s = 'tried';
 	firebase.database().ref('game/words/'+w).once('value').then(function(snapshot) {
 		var word_status = snapshot.val();
 		console.log(w);
@@ -408,28 +404,18 @@ function updateFirebase(w,s){
 		var update = '';
 		var updates = {};
 		if (elts.length == 2){
-			if (player == 0) {
-				update = word_status + ','+ s;
-				updates['game/words/'+w] = update;	
-				firebase.database().ref().update(updates);	
-			}
-			else {
-				update = word_status+ ', ,'+ getWordStatus + s;
-				updates['game/words/'+w] = update;	
-				firebase.database().ref().update(updates);	
-			}
+			if (player == 0) updateFirebaseGivenWordUpdate(w,word_status + ','+ s);
+			else updateFirebaseGivenWordUpdate(w,word_status+ ', ,'+ s);
 		}
 		else{
-			if (player==0) {
-				update = elts[0] +','+ elts[1] +',' + s + ','+elts[3];
-				updates['game/words/'+w] = update;	
-				firebase.database().ref().update(updates);	
-			}
-			else {
-				update = elts[0] +','+ elts[1] + ','+elts[2] +',' + s;
-				updates['game/words/'+w] = update;	
-				firebase.database().ref().update(updates);	
-			}
+			if (player==0)  updateFirebaseGivenWordUpdate(w, elts[0] +','+ elts[1] +',' + s + ','+elts[3]);
+			else  updateFirebaseGivenWordUpdate(w, elts[0] +','+ elts[1] + ','+elts[2] +',' + s);
 		}
 	})
+}
+
+function updateFirebaseGivenWordUpdate(w,u){
+	var updates = {};
+	updates['game/words/'+w] = u;	
+	firebase.database().ref().update(updates).then(updateBoard);	
 }
