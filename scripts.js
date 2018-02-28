@@ -347,24 +347,23 @@ function updateBoard(){
 			// console.log(elts);
 			// console.log(player);
 			updateWordStatusSelf(w,elts[2+player]);
-			if (elts[2+opponent] == 'tried') updateWordStatusOpponent(w,'tried');
+			updateWordStatusOpponent(w,elts[2+opponent]);
 		})
 	})
 }
 
 function updateWordStatusSelf(w,status){
-	// console.log("update "+w+" to "+status);
 	var button = wordsToButtons[w];
-
 	if (status == "guessed") button.style.background = colorsDict["darkgreen"];
 	else if (status == "lost") button.style.background = colorsDict['lost'];
 	else if (status == "tried") button.innerHTML = "X - "+w+" - X" ;
 }
 
 function updateWordStatusOpponent(w,status){
-	// console.log("update "+w+" to "+status);
 	var button = wordsToButtons[w];
-	button.innerHTML = "Y - "+w+" - Y" ;
+	if (status == "guessed") button.style.background = colorsDict["darkgreen"];
+	else if (status == "lost") button.style.background = colorsDict['lost'];
+	else if (status == "tried") button.innerHTML = "Y - "+w+" - Y" ;
 }
 
 function sendClue(){
