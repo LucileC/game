@@ -16,12 +16,12 @@
   	}
     table {
       border-collapse: collapse;
-      width: 700px;
+      width: 90%;
     }
 
     th, td {
-      padding: 20px;
-      text-align: center;
+      padding: 2px;
+      text-align: left;
     }th {
       background-color: #537AB9;
       color: white;
@@ -65,14 +65,20 @@
 <body onload="help()">
   <div class="mainDiv" align="center">
     <h1>Code Names Duo</h1>
-    <div id="helpdiv" class="help-grid">
-    	<!-- <table id="help">
-	    </table> -->
-    </div>
+    <!-- <div id="helpdiv" class="help-grid"> -->
+    	<table id="helptable" style="display: block;">
+	    </table>
+    <!-- </div> -->
     <br>
+    <div id='end' style="display: none;">
+    	<br>
+    	<div id='endmsg'>
+    	</div>
+    </div>
     <div id="board" style="display: none;">
     	<!-- <div id="indicesLeft"> </div> indices restants.
     	<br><br> -->
+    	<br>
     <div class="grid-container" >
 	  <div class="grid-item"><button type="button" class="word" id=00 onclick="checkWord('00')"></button></div>
 	  <div class="grid-item"><button type="button" class="word" id=01 onclick="checkWord('01')"></button></div>
