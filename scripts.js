@@ -30,7 +30,7 @@ words_codeNamesDuo = [ 'OASIS', 'VODKA', 'CRIQUET', 'CHÈVRE', 'MOMIE', 'LOUP', 
 						'PION', 'PÉKIN', 'PRINCE', 'POCHE', 'CHASSEUR', 'PIOCHE', 'SEAU', 'ARÊTE', 'NORD', 'CHOUETTE', 'PORTE', 'VOLCAN', 'SÉISME', 'GRADE', 'DOLLAR', 'TABAC',
 						'BOIS', 'SOUPE', 'ARMÉE', 'SUD', 'SOEUR', 'DÉMARCHE', 'ARTÈRE', 'VOLTAIRE', 'GAZ', 'PAIN', 'NEWTON', 'ARTICLE', 'STADE', 'CURRY']; 
 
-TO_GUESS = 13;
+TO_GUESS = 15;
 colorsDict = {
 	'green': "#83F889",
 	'black': "#f94d4d",//"#B3B3B3",
