@@ -55,7 +55,7 @@ function help(){
 		if(i%2 == 0) row = helptable.insertRow(-1);
 		else {
 			var idx = helptable.rows.length; 
-			console.log(idx);
+			// console.log(idx);
 			row = helptable.rows[idx-1];
 		}
 		var cellbutton = row.insertCell(-1);
@@ -67,16 +67,11 @@ function help(){
 	}
 }
 
-function callPopup() {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
-}
-
 function callPopup(){
 	if (confirm("Etes vous sur de vouloir arreter la partie ?")) reset();
 }
 
-function resetFirebase(callback){
+function resetFirebase(){
 	updateGame = {};
 	updateGame['game'] = null;
 	firebase.database().ref().update(updateGame);	
@@ -84,7 +79,7 @@ function resetFirebase(callback){
 	updateGame['game/on'] = 0;
 	updateGame['game/nbClues'] = 0;
 	firebase.database().ref().update(updateGame);	
-	callback();
+	// callback();
 }
 
 function reload(){	
@@ -93,9 +88,7 @@ function reload(){
 
 function reset(){
 	console.log('in reset!')
-	resetFirebase(function(){
-		reload();
-	})
+	resetFirebase();
 }
 
 function update(){
@@ -105,11 +98,19 @@ function update(){
 	});
 }
 
-function test(){
-	console.log("test");
-}
+var clueTxtBox = document.getElementById("clue");
+clueTxtBox.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
+    	var v = clueTxtBox.value;
+    	if (v == 0) {
+    		startGame(1);
+    		clueTxtBox.value = '';
+    	}
+        else sendClue();
+    }
+});
 
-function startGame(){	
+function startGame(refreshplayer0=0){	
 	var _ = window.setInterval(updateBoard, 2000);
 
 	firebase.database().ref('game/on').once('value').then(function(snapshot) {
@@ -120,6 +121,7 @@ function startGame(){
 		var starButton = document.getElementById("starButton");
 		starButton.style.display = "none";
 		if (gameval==0){
+			console.log("start game with player = 0");
 			player = 0;
 			opponent = 1;
 			wordsDict = initGamePlayer0();	
@@ -134,14 +136,19 @@ function startGame(){
 		}
 		else{
 			var count = 0;
-			player = 1;
-			opponent = 0;
+			if (refreshplayer0 == 0){
+				player = 1;
+				opponent = 0;
+			} else {
+				player = 0;
+				opponent = 1;
+			}
 			firebase.database().ref('game/words').once('value').then(function(snapshot){
 				snapshot.forEach(function(child){
 					if (child.key != "on") {
 						wordsDict[child.key] = child.val();
 						count++;
-						if (count == 25) initGameplayer1(wordsDict);
+						if (count == 25) initGameplayer1(wordsDict,refreshplayer0);
 					}
 				})
 			})
@@ -236,10 +243,12 @@ function initGamePlayer0(){
 	words_25 = shuffle(words_25);
 	common_words = words_25.slice(0,3);
 	var words_22 = words_25.slice(3);
-	words_player[0] = common_words.concat(words_25.slice(3,8));
-	words_player[1] = common_words.concat(words_25.slice(8,13));
-	blackwords_player[0] = words_25.slice(12,15);
-	blackwords_player[1] = [words_25[3],words_25[13],words_25[15]];
+	words_player[0] = common_words.concat(words_25.slice(3,9));
+	words_player[1] = common_words.concat(words_25.slice(9,15));
+	blackwords_player[0] = words_25.slice(14,17);
+	blackwords_player[1] = [words_25[3],words_25[15],words_25[17]];
+	console.log(words_player);
+	console.log(blackwords_player);
 
 	var wordsDict =  {};
 	words_25.forEach(function(w){
@@ -259,34 +268,37 @@ function initGamePlayer0(){
 			else wordsDict[w] = "yellow,yellow";
 		}
 	});
-	console.log(wordsDict)
-	colorWords(wordsDict,0,wordsToButtons)
+	console.log(wordsDict);
+	colorWords(wordsDict,0,wordsToButtons);
 	return wordsDict;
 }
 
-function initGameplayer1(wordsDict){
+function initGameplayer1(wordsDict,refreshplayer0=0){
 	console.log("initGameplayer1");
+	console.log("refreshplayer0 = "+ refreshplayer0 + ", player = "+player);
 	console.log(wordsDict);
-	console.log(Object.keys(wordsDict).length)
+	// console.log(Object.keys(wordsDict).length)
 	for (var key in wordsDict){
 		words_25.push(key);
 		var colors = wordsDict[key].split(",");
-		if (colors[0] == "green") {
-			words_player[0].push(key);
-			if (colors[1] == "green") common_words.push(key);
+		// var i = refreshplayer0;
+		var otherplayer = Math.abs(player-1);
+		if (colors[otherplayer] == "green") {//0
+			words_player[otherplayer].push(key);
+			if (colors[player] == "green") common_words.push(key);//1
 		}
-		if (colors[1] == "green") words_player[1].push(key);
-		if (colors[0] == "black") blackwords_player[0].push(key);
-		if (colors[1] == "black") blackwords_player[1].push(key);
+		if (colors[player] == "green") words_player[player].push(key);
+		if (colors[otherplayer] == "black") blackwords_player[otherplayer].push(key);
+		if (colors[player] == "black") blackwords_player[player].push(key);
 	}
 
 	wordsToButtons = displayWords(words_25);
 
-	console.log(words_25);
+	// console.log(words_25);
 	console.log(common_words);
 	console.log(words_player);
 	console.log(blackwords_player);
-	colorWords(wordsDict,1,wordsToButtons)
+	colorWords(wordsDict,player,wordsToButtons)
 }
 
 function addClue(div,txt,newClue){
@@ -346,7 +358,7 @@ function displayEndOfGameMsg(msg){
 
 function checkGuessedWords(w){
 	if (guessed_list.indexOf(w) == -1) guessed_list.push(w);
-	if (guessed_list.length == TO_GUESS) displayEndOfGameMsg('Vous avez gagne !!!');
+	if (guessed_list.length == TO_GUESS) displayEndOfGameMsg('Vous avez gagné !!!');
 }
 
 function updateWordStatus(w,status,numplayer){
@@ -355,11 +367,13 @@ function updateWordStatus(w,status,numplayer){
 		checkGuessedWords(w);
 		button.style.background = colorsDict["darkgreen"];
 	}
-	else if (status == "lost") button.style.background = colorsDict['lost'];
+	else if (status == "lost") {
+		button.style.background = colorsDict['lost'];
+		displayEndOfGameMsg('Vous avez perdu ...');
+	}
 	else if (status == "tried") {
 		if (numplayer == player) button.innerHTML = "X - "+w+" - X" ;
 		else button.innerHTML = "Y - "+w+" - Y" ;
-		displayEndOfGameMsg('Vous avez perdu ...');
 	}
 }
 
