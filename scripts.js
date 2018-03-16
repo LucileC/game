@@ -100,19 +100,22 @@ function callPopup(){
 	if (confirm("Etes vous sur de vouloir arreter la partie ?")) reset();
 }
 
+var readyToReset = 0;
+
 function resetFirebase(){
 	updateGame = {};
 	updateGame['game'] = null;
-	firebase.database().ref().update(updateGame);	
+	firebase.database().ref().update(updateGame).then(reload);	
 	var updateGame = {};
 	updateGame['game/on'] = 0;
 	updateGame['game/nbClues'] = 0;
-	firebase.database().ref().update(updateGame);	
+	firebase.database().ref().update(updateGame).then(reload);	
 	// callback();
 }
 
 function reload(){	
-	location.reload();
+	readyToReset++;
+	if (readyToReset == 2) location.reload();
 }
 
 function reset(){
@@ -378,16 +381,20 @@ function updateBoard(){
 	})
 }
 
-function displayEndOfGameMsg(msg){
+function displayEndOfGameMsg(won){
 	var windiv = document.getElementById('end');
 	windiv.style.display = 'block';
 	var endmsg = document.getElementById('end');
-	endmsg.innerHTML = msg;
+	var msg, img;
+	if (won) img = 'fireworks.png';
+	else img = 'skullhead.jpg';
+	var htmlimg = '<img src="'+img+'"/>';
+	endmsg.innerHTML = htmlimg;
 }
 
 function checkGuessedWords(w){
 	if (guessed_list.indexOf(w) == -1) guessed_list.push(w);
-	if (guessed_list.length == TO_GUESS) displayEndOfGameMsg('Vous avez gagné !!!');
+	if (guessed_list.length == TO_GUESS) displayEndOfGameMsg(won=1);
 }
 
 function updateWordStatus(w,status,numplayer){
@@ -398,7 +405,7 @@ function updateWordStatus(w,status,numplayer){
 	}
 	else if (status == "lost") {
 		button.style.background = colorsDict['lost'];
-		displayEndOfGameMsg('Vous avez perdu ...');
+		displayEndOfGameMsg(won=0);
 	}
 	else if (status == "tried") {
 		if (numplayer == player) button.innerHTML = "X - "+w+" - X" ;
