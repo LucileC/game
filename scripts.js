@@ -109,6 +109,7 @@ function resetFirebase(){
 	var updateGame = {};
 	updateGame['game/on'] = 0;
 	updateGame['game/nbClues'] = 0;
+	updateGame['game/nbChats'] = 0;
 	firebase.database().ref().update(updateGame).then(reload);	
 	// callback();
 }
@@ -138,7 +139,7 @@ clueTxtBox.addEventListener("keydown", function (e) {
     		startGame(1);
     		clueTxtBox.value = '';
     	}
-        else sendClue();
+        else parseClue();
     }
 });
 
@@ -344,8 +345,9 @@ function addClue(div,txt,newClue){
 	div.appendChild(p);
 }
 
-function displayClues(nbClues,cluesDict,nbNewClues){
-	var div = document.getElementById('cluelist');
+function displayCluesAndChats(htmleltname,nbClues,cluesDict,nbNewClues){
+	// console.log('in displayClues');
+	var div = document.getElementById(htmleltname);
 	div.innerHTML = "";
 	for (var i=nbClues-1; i>=0; i--){
 		addClue(div,cluesDict[i],nbClues-i<=nbNewClues);
@@ -354,21 +356,8 @@ function displayClues(nbClues,cluesDict,nbNewClues){
 
 function updateBoard(){	
 	console.log("In updateBoard");
-	var nbDisplayedClues = document.getElementById("cluelist").childElementCount;
-	firebase.database().ref('game/nbClues').once('value').then(function(snapshot) {
-		var nbClues = snapshot.val();
-		if (nbDisplayedClues != nbClues){
-			clues = {};
-			var count = 0;
-			firebase.database().ref('game/clues').once('value').then(function(snapshot){
-				snapshot.forEach(function(child){
-					clues[child.key] = child.val();
-					count ++;
-					if (count == nbClues) displayClues(nbClues,clues,count-nbDisplayedClues);
-				})
-			})
-		}
-	})
+	updateCluesAndChat("cluelist",'nbClues','clues');
+	updateCluesAndChat("chatlist",'nbChats','chats');
 	firebase.database().ref('game/words').once('value').then(function(snapshot){
 			guessed_list = [];
 		snapshot.forEach(function(child){
@@ -378,6 +367,27 @@ function updateBoard(){
 			updateWordStatus(w,elts[2+player],player);
 			updateWordStatus(w,elts[2+opponent],opponent);
 		})
+	})
+}
+
+
+function updateCluesAndChat(htmleltname,firebaseNbKey,firebaseKey){
+	var nbDisplayedClues = document.getElementById(htmleltname).childElementCount;
+	// console.log('updateCluesAndChat '+htmleltname,firebaseNbKey,firebaseKey);
+	firebase.database().ref('game/'+firebaseNbKey).once('value').then(function(snapshot) {
+		var nbClues = snapshot.val();
+		// console.log(firebaseKey+': displayed = '+nbDisplayedClues+', in firebase = '+nbClues);
+		if (nbDisplayedClues != snapshot.val()){
+			clues = {};
+			var count = 0;
+			firebase.database().ref('game/'+firebaseKey).once('value').then(function(snapshot){
+				snapshot.forEach(function(child){
+					clues[child.key] = child.val();
+					count ++;
+					if (count == nbClues) displayCluesAndChats(htmleltname,nbClues,clues,count-nbDisplayedClues);
+				})
+			})
+		}
 	})
 }
 
@@ -413,18 +423,53 @@ function updateWordStatus(w,status,numplayer){
 	}
 }
 
-function sendClue(){
+function wordCount(str) { 
+  c = str.split(" ").length;
+  if (c==1) c2 = str.split(",").length;
+  return c || c2;
+}
+
+function getSecondWord(str){
+	s = str.split(" ");
+	if (s.length == 2) return s[1];
+	s2 = str.split(",");
+	if (s2.length == 2) return s2[1];
+	else return false;
+}
+
+function isNumber(str){
+	str = str.toLowerCase();
+	var numbers = ['un', 'deux', 'trois', 'quatre', 'cinq', 'six', '1', '2', '3', '4', '5', '6'];
+	if (numbers.indexOf(str)!=-1) return true;
+	else return false;
+}
+
+function parseClue(clue){
 	var clueElt = document.getElementById("clue");
 	var clue = clueElt.value;	
 	clueElt.value = "";
 	console.log(clue);
 
-	firebase.database().ref('game/nbClues').once('value').then(function(snapshot) {
-		var nbClues = snapshot.val();
-		nbClues ++;
+	if (wordCount(clue)==2) {
+		secondWord = getSecondWord(clue);
+		if (isNumber(secondWord)){
+			sendClueAndChat(clue,'nbClues','clues');
+		}
+		else sendClueAndChat(clue,'nbChats','chats');
+	}
+	else sendClueAndChat(clue,'nbChats','chats');
+
+}
+
+
+function sendClueAndChat(str,firebaseNbKey,firebaseKey){
+	console.log('in send sendClueAndChat');
+	firebase.database().ref('game/'+firebaseNbKey).once('value').then(function(snapshot) {
+		// var nbClues = snapshot.val();
+		// nbClues ++;
 		var updateGame = {};
-		updateGame['game/clues/'+(nbClues-1)] = clue;
-		updateGame['game/nbClues'] = nbClues;
+		updateGame['game/'+firebaseKey+'/'+(snapshot.val())] = str;
+		updateGame['game/'+firebaseNbKey] = snapshot.val()+1;
 		firebase.database().ref().update(updateGame).then(updateBoard());
 	})
 }

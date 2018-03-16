@@ -112,14 +112,18 @@
 	<br>
 	<center><input type="submit" onclick="updateBoard()" value="Update"></center> -->
 	</div>
-	Indice: 	<input type="text" name="indice" id="clue">  <button type="submit" onclick="sendClue()" id="sendClue" style="width:80px">Envoyer</button>
+	Indice: 	<input type="text" name="indice" id="clue">  <button type="submit" onclick="parseClue()" id="sendClue" style="width:80px">Envoyer</button>
 	<br><br>
 	<center><input type="submit" onclick="startGame()" value="Démarer le jeu" id="starButton"></center>
 	<br>
 	<!-- <ul id="cluelist">
 	</ul> -->
-	<div id="cluelist">
-	</div>
+	<table width="90%" align="center">
+		<tr>
+			<td width="35%" align="center"><div align="center" id="cluelist">	</div></td>
+			<td width="65%" align="left"><div id="chatlist">	</div></td>
+		</tr>
+	</table>
 	<br>
 	<center>
 		<input type="submit" onclick="callPopup()" value="Reset">
