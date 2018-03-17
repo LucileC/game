@@ -409,7 +409,7 @@ function displayEndOfGameMsg(won){
 	windiv.style.display = 'block';
 	var endmsg = document.getElementById('end');
 	var msg, img;
-	if (won) img = 'fireworks.jpg';
+	if (won) img = 'fireworks.JPG';
 	else img = 'skullhead.jpg';
 	var htmlimg = '<img src="'+img+'"/>';
 	endmsg.innerHTML = htmlimg;
