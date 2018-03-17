@@ -390,8 +390,9 @@ function updateCluesAndChat(htmleltname,firebaseNbKey,firebaseKey){
 					clues[child.key] = child.val();
 					count ++;
 					if (htmleltname == 'cluelist')  { // update clues_player of opponent if new clue and reset canGuess to true;
-						if (clues_player[player].indexOf(clue) == -1 && clues_player[opponent].indexOf(clue) == -1){
-							clues_player[opponent].push(clue);
+						if (clues_player[player].indexOf(clues[child.key]) == -1 && clues_player[opponent].indexOf(clues[child.key]) == -1){
+							console.log(clues_player);
+							clues_player[opponent].push(clues[child.key]);
 							canGuess = true;
 							console.log('Can guess again!');
 						}
@@ -466,6 +467,8 @@ function parseClue(clue){
 		secondWord = getSecondWord(clue);
 		if (isNumber(secondWord)){
 			clues_player[player].push(clue);
+			console.log('sent clue');
+			console.log(clues_player);
 			sendClueAndChat(clue,'nbClues','clues');
 		}
 		else sendClueAndChat(clue,'nbChats','chats');
@@ -507,7 +510,7 @@ function checkWord(id){
 }
 
 function popupCannotGuess() {
-	alert("Vous vous êtes trompé(e) sur le dernier mot que vous avez essayé de deviner.\nVous ne pouvez plus deviner de mot temps que votre partenairene vous redonne pas d'indice !");
+	alert("Vous vous êtes trompé(e) sur le dernier mot que vous avez essayé de deviner.\nVous ne pouvez plus deviner de mot tant que votre partenaire ne vous redonne pas d'indice !");
 }
 
 
