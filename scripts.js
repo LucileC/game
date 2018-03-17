@@ -68,6 +68,10 @@ var wordsToButtons = {};
 var guessed_list = [];
 var clues = {};
 
+var canGuess = false;
+var clues_player = {};
+clues_player[0] = [];
+clues_player[1] = [];
 
 function help(){
 	var helptable = document.getElementById('helptable');
@@ -385,6 +389,13 @@ function updateCluesAndChat(htmleltname,firebaseNbKey,firebaseKey){
 				snapshot.forEach(function(child){
 					clues[child.key] = child.val();
 					count ++;
+					if (htmleltname == 'cluelist')  { // update clues_player of opponent if new clue and reset canGuess to true;
+						if (clues_player[player].indexOf(clue) == -1 && clues_player[opponent].indexOf(clue) == -1){
+							clues_player[opponent].push(clue);
+							canGuess = true;
+							console.log('Can guess again!');
+						}
+					}
 					if (count == nbClues) displayCluesAndChats(htmleltname,nbClues,clues,count-nbDisplayedClues);
 				})
 			})
@@ -454,6 +465,7 @@ function parseClue(clue){
 	if (wordCount(clue)==2) {
 		secondWord = getSecondWord(clue);
 		if (isNumber(secondWord)){
+			clues_player[player].push(clue);
 			sendClueAndChat(clue,'nbClues','clues');
 		}
 		else sendClueAndChat(clue,'nbChats','chats');
@@ -476,13 +488,26 @@ function sendClueAndChat(str,firebaseNbKey,firebaseKey){
 }
 
 function checkWord(id){
-	var button = document.getElementById(id);
-	var w = button.innerHTML;
-	// console.log('word = '+w);
-	l = w.length;
-	if (w.indexOf('X - ') != -1 || w.indexOf('Y - ') != -1) w = w.substring(4,l-4);
-	// console.log('word = '+w);
-	updateFirebaseGivenWordStatus(w);
+	if (canGuess){
+		var button = document.getElementById(id);
+		var w = button.innerHTML;
+		// console.log('word = '+w);
+		l = w.length;
+		if (w.indexOf('X - ') != -1 || w.indexOf('Y - ') != -1) w = w.substring(4,l-4);
+		// console.log('word = '+w);
+		if (words_player[opponent].indexOf(w) == -1) {
+			canGuess = false;
+			console.log("Can't guess anymore!");
+		}
+		updateFirebaseGivenWordStatus(w);
+	}
+	else{
+		popupCannotGuess();
+	}
+}
+
+function popupCannotGuess() {
+	alert("Vous vous êtes trompé(e) sur le dernier mot que vous avez essayé de deviner.\nVous ne pouvez plus deviner de mot temps que votre partenairene vous redonne pas d'indice !");
 }
 
 
