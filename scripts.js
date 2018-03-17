@@ -1,5 +1,6 @@
 words = ["Accident", "Achat", "Acné", "Action", "Adolescent", "Afrique", "Aiguille", "Allumer", "Alpes", "Alphabet", "Altitude", "Amérique", "Ami", "Amour", "Ampoule", "Anniversaire", "Appétit", "Araignée", "Arbre", "Arc", "Arc-en-ciel", "Argent", "Arme", "Armée", "Ascenseur", "Asie", "Assis", "Astronaute", "Atchoum", "Athlète", "Atlantide", "Aube", "Australie", "Avec", "Aventure", "Avion", "Avocat", "Bac", "Baguette", "Bain", "Baiser", "Balai", "Balle", "Ballon", "Bambou", "Banane", "Bannir", "Barbe", "Barrière", "Bas", "Basket", "Bateau", "Bâton", "Batterie", "Bébé", "Beethoven", "Bête", "Biberon", "Bière", "Blanc", "Blé", "Bleu", "Bob", "Boisson", "Boîte", "Bombe", "Bonbon", "Bonnet", "Bord", "Bordeaux", "Botte", "Boue", "Bougie", "Boule", "Bouteille", "Bouton", "Branche", "Bras", "Bravo", "Bretagne", "Brise", "Brosse", "Bruit", "Brume", "Brun", "Bûche", "Bulle", "Bureau", "But", "Cabane", "Cabine", "Cacher", "Cadeau", "Cafard", "Café", "Caisse", "Calculer", "Calme", "Caméra", "Camion", "Camping", "Canada", "Canard", "Canette", "Canine", "Cap", "Capitalisme", "Car", "Carotte", "Carré", "Carte", "Carton", "Casque", "Casser", "Cassette", "Cauchemar", "Cause", "Ceinture", "Cellule", "Cercle", "Chaîne", "Chair", "Chaise", "Champ", "Champion", "Chant", "Chapeau", "Charbon", "Charge", "Chasse", "Chat", "Château", "Chaud", "Chaussure", "Chauve", "Chef", "Chemise", "Chêne", "Cher", "Cheval", "Chevalier", "Cheveu", "Chien", "Chiffre", "Chine", "Chocolat", "Chômage", "Ciel", "Cil", "Cinéma", "Cire", "Cirque", "Citron", "Clé", "Clou", "Clown", "Coach", "Coccinelle", "Code", "Cœur", "Col", "Colle", "Colline", "Colonne", "Cône", "Confort", "Continu", "Contre", "Conversation", "Copain", "Coq", "Coquillage", "Corbeau", "Corde", "Corps", "Côte", "Coude", "Couloir", "Coup", "Cour", "Courant", "Courrier", "Cours", "Course", "Court", "Couteau", "Couvert", "Couverture", "Cowboy", "Crac", "Crayon", "Crème", "Critique", "Crochet", "Croix", "Croûte", "Cuillère", "Cuir", "Cuisine", "Culotte", "Cycle", "Dard", "Debout", "Défaut", "Dehors", "Démocratie", "Dent", "Dentiste", "Dessin", "Devoir", "Diamant", "Dictionnaire", "Dieu", "Dinosaure", "Discours", "Disque", "Dix", "Docteur", "Doigt", "Domino", "Dormir", "Droit", "Eau", "Échec", "Échelle", "Éclair", "École", "Écran", "Écraser", "Écrit", "Église", "Égout", "Électricité", "Éléphant", "Élève", "Elfe", "Empreinte", "Enceinte", "Épice", "Épine", "Erreur", "Espace", "Espion", "Essence", "État", "Été", "Étoile", "Étranger", "Éventail", "Évolution", "Explosoin", "Extension", "Face", "Fan", "Farce", "Fatigue", "Fauteuil", "Femme", "Fenêtre", "Fer", "Fête", "Feu", "Feuille", "Fidèle", "Fil", "Fille", "Flamme", "Flèche", "Fleur", "Fleuve", "Fond", "Football", "Forêt", "Forger", "Foudre", "Fouet", "Four", "Fourmi", "Froid", "Fromage", "Front", "Fruit", "Fuir", "Futur", "Garçon", "Gâteau", "Gauche", "Gaz", "Gazon", "Gel", "Genou", "Glace", "Gomme", "Gorge", "Goutte", "Grand", "Grèce", "Grenouille", "Grippe", "Gris", "Gros", "Groupe", "Guitare", "Hasard", "Haut", "Hélicoptère", "Herbe", "Heureux", "Histoire", "Hiver", "Hôtel", "Hugo", "Huile", "Humide", "Humour", "Indice", "Internet", "Inviter", "Italie", "Jacques", "Jambe", "Jambon", "Jardin", "Jaune", "Jean", "Jeanne", "Jet", "Jeu", "Jogging", "Jour", "Journal", "Jupiter", "Kilo", "Kiwi", "Laine", "Lait", "Langue", "Lapin", "Latin", "Laver", "Lecteur", "Léger", "Lent", "Lettre", "Lien", "Ligne", "Linge", "Lion", "Lit", "Livre", "Loi", "Long", "Louis", "Loup", "Lumière", "Lundi", "Lune", "Lunette", "Machine", "Macho", "main", "Maison", "Maîtresse", "Mal", "Maladie", "Maman", "Mammouth", "Manger", "Marais", "Marc", "Marche", "Mariage", "Marie", "Mariée", "Marque", "Marseille", "Masse", "Mer", "Messe", "Mètre", "Métro", "Miaou", "Micro", "Mieux", "Mille", "Mine", "Miroir", "Moderne", "Moitié", "Monde", "Monstre", "Montagne", "Montre", "Mort", "Moteur", "Moto", "Mou", "Mouche", "Moulin", "Moustache", "Mouton", "Mur", "Muscle", "Musique", "Mystère", "Nage", "Nature", "Neige", "Neutre", "New York", "Nez", "Nid", "Ninja", "Niveau", "Noël", "Nœud", "Noir", "Nous", "Nuage", "Nuit", "Numéro", "Œil", "Œuf", "Oiseau", "Olympique", "Ombre", "Ongle", "Oral", "Orange", "Ordinateur", "Ordre", "Ordure", "Oreille", "Organe", "Orgueil", "Ours", "Outil", "Ouvert", "Ovale", "Pain", "Palais", "Panneau", "Pantalon", "Pantin", "Papa", "Papier", "Papillon", "Paradis", "Parc", "Paris", "Parole", "Partie", "Passe", "Pâte", "Patin", "Patte", "Paul", "Payer", "Pêche", "Peinture", "Pendule", "Penser", "Personne", "Petit", "Peur", "Philosophe", "Photo", "Phrase", "Piano", "Pièce", "Pied", "Pierre", "Pile", "Pilote", "Pince", "Pioche", "Pion", "Pirate", "Pire", "Piscine", "Place", "Plafond", "Plage", "Plaie", "Plan", "Planche", "Planète", "Plante", "Plastique", "Plat", "Plat", "Plomb", "Plonger", "Pluie", "Poche", "Poète", "Poids", "Poing", "Point", "Poivre", "Police", "Politique", "Pollen", "Polo", "Pomme", "Pompe", "Pont", "Population", "Port", "Porte", "Portefeuille", "Positif", "Poste", "Poubelle", "Poule", "Poupée", "Pousser", "Poussière", "Pouvoir", "Préhistoire", "Premier", "Présent", "Presse", "Prier", "Princesse", "Prise", "Privé", "Professeur", "Psychologie", "Public", "Pull", "Punk", "Puzzle", "Pyjama", "Quatre", "Quinze", "Race", "Radio", "Raisin", "Rap", "Rayé", "Rayon", "Réfléchir", "Reine", "Repas", "Reptile", "Requin", "Rêve", "Riche", "Rideau", "Rien", "Rire", "Robinet", "Roche", "Roi", "Rond", "Rose", "Roue", "Rouge", "Rouille", "Roux", "Russie", "Sable", "Sabre", "Sac", "Sain", "Saison", "Sale", "Salle", "Salut", "Samu", "Sandwich", "Sang", "Sapin", "Satellite", "Saumon", "Saut", "Savoir", "Schtroumpf", "Science", "Scout", "Sec", "Seine", "Sel", "Sept", "Serpent", "Serrer", "Sexe", "Shampooing", "Siècle", "Siège", "Sieste", "Silhouette", "Sirène", "Ski", "Soleil", "Sommeil", "Son", "Sonner", "Sorcière", "Sourd", "Souris", "Sport", "Star", "Station", "Stylo", "Sur", "Surface", "Sushi", "Swing", "Tableau", "Tache", "Taille", "Tante", "Tapis", "Tard", "Taxi", "Téléphone", "Télévision", "Temple", "Temps", "Tennis", "Tête", "Thé", "Tigre", "Tintin", "Tissu", "Titre", "Titre", "Toast", "Toilette", "Tokyo", "Tombe", "Ton", "Top", "Touche", "Toujours", "Tour", "Tournoi", "Tout", "Trace", "Train", "Traîner", "Transport", "Travail", "Trésor", "Triangle", "Triste", "Trône", "Troupeau", "Tsar", "Tube", "Tuer", "Tuer", "Tupperware", "Tuyau", "Twitter", "Type", "Université", "Vache", "Vache", "Vague", "Vaisselle", "Valeur", "Ver", "Verdict", "Verre", "Vers", "Vert", "Veste", "Viande", "Vide", "Vie", "Vieux", "Ville", "Vin", "Vingt", "Violon", "Vipère", "Vision", "Vite", "Vive", "Vœu", "Voile", "Voisin", "Voiture", "Vol", "Volume", "Vote", "Vouloir", "Voyage", "Zen", "Zéro", "Zodiaque", "Zone", "Zoo"]
 words_caps = ["ACCIDENT", "ACHAT", "ACNE", "ACTION", "ADOLESCENT", "AFRIQUE", "AIGUILLE", "ALLUMER", "ALPES", "ALPHABET", "ALTITUDE", "AMERIQUE", "AMI", "AMOUR", "AMPOULE", "ANNIVERSAIRE", "APPETIT", "ARAIGNEE", "ARBRE", "ARC", "ARC-EN-CIEL", "ARGENT", "ARME", "ARMEE", "ASCENSEUR", "ASIE", "ASSIS", "ASTRONAUTE", "ATCHOUM", "ATHLETE", "ATLANTIDE", "AUBE", "AUSTRALIE", "AVEC", "AVENTURE", "AVION", "AVOCAT", "BAC", "BAGUETTE", "BAIN", "BAISER", "BALAI", "BALLE", "BALLON", "BAMBOU", "BANANE", "BANNIR", "BARBE", "BARRIERE", "BAS", "BASKET", "BATEAU", "BATON", "BATTERIE", "BEBE", "BEETHOVEN", "BETE", "BIBERON", "BIERE", "BLANC", "BLE", "BLEU", "BOB", "BOISSON", "BOITE", "BOMBE", "BONBON", "BONNET", "BORD", "BORDEAUX", "BOTTE", "BOUE", "BOUGIE", "BOULE", "BOUTEILLE", "BOUTON", "BRANCHE", "BRAS", "BRAVO", "BRETAGNE", "BRISE", "BROSSE", "BRUIT", "BRUME", "BRUN", "BUCHE", "BULLE", "BUREAU", "BUT", "CABANE", "CABINE", "CACHER", "CADEAU", "CAFARD", "CAFE", "CAISSE", "CALCULER", "CALME", "CAMERA", "CAMION", "CAMPING", "CANADA", "CANARD", "CANETTE", "CANINE", "CAP", "CAPITALISME", "CAR", "CAROTTE", "CARRE", "CARTE", "CARTON", "CASQUE", "CASSER", "CASSETTE", "CAUCHEMAR", "CAUSE", "CEINTURE", "CELLULE", "CERCLE", "CHAINE", "CHAIR", "CHAISE", "CHAMP", "CHAMPION", "CHANT", "CHAPEAU", "CHARBON", "CHARGE", "CHASSE", "CHAT", "CHATEAU", "CHAUD", "CHAUSSURE", "CHAUVE", "CHEF", "CHEMISE", "CHENE", "CHER", "CHEVAL", "CHEVALIER", "CHEVEU", "CHIEN", "CHIFFRE", "CHINE", "CHOCOLAT", "CHOMAGE", "CIEL", "CIL", "CINEMA", "CIRE", "CIRQUE", "CITRON", "CLE", "CLOU", "CLOWN", "COACH", "COCCINELLE", "CODE", "COEUR", "COL", "COLLE", "COLLINE", "COLONNE", "CONE", "CONFORT", "CONTINU", "CONTRE", "CONVERSATION", "COPAIN", "COQ", "COQUILLAGE", "CORBEAU", "CORDE", "CORPS", "COTE", "COUDE", "COULOIR", "COUP", "COUR", "COURANT", "COURRIER", "COURS", "COURSE", "COURT", "COUTEAU", "COUVERT", "COUVERTURE", "COWBOY", "CRAC", "CRAYON", "CREME", "CRITIQUE", "CROCHET", "CROIX", "CROUTE", "CUILLERE", "CUIR", "CUISINE", "CULOTTE", "CYCLE", "DARD", "DEBOUT", "DEFAUT", "DEHORS", "DEMOCRATIE", "DENT", "DENTISTE", "DESSIN", "DEVOIR", "DIAMANT", "DICTIONNAIRE", "DIEU", "DINOSAURE", "DISCOURS", "DISQUE", "DIX", "DOCTEUR", "DOIGT", "DOMINO", "DORMIR", "DROIT", "EAU", "ECHEC", "ECHELLE", "ECLAIR", "ECOLE", "ECRAN", "ECRASER", "ECRIT", "EGLISE", "EGOUT", "ELECTRICITE", "ELEPHANT", "ELEVE", "ELFE", "EMPREINTE", "ENCEINTE", "EPICE", "EPINE", "ERREUR", "ESPACE", "ESPION", "ESSENCE", "ETAT", "ETE", "ETOILE", "ETRANGER", "EVENTAIL", "EVOLUTION", "EXPLOSOIN", "EXTENSION", "FACE", "FAN", "FARCE", "FATIGUE", "FAUTEUIL", "FEMME", "FENETRE", "FER", "FETE", "FEU", "FEUILLE", "FIDELE", "FIL", "FILLE", "FLAMME", "FLECHE", "FLEUR", "FLEUVE", "FOND", "FOOTBALL", "FORET", "FORGER", "FOUDRE", "FOUET", "FOUR", "FOURMI", "FROID", "FROMAGE", "FRONT", "FRUIT", "FUIR", "FUTUR", "GARCON", "GATEAU", "GAUCHE", "GAZ", "GAZON", "GEL", "GENOU", "GLACE", "GOMME", "GORGE", "GOUTTE", "GRAND", "GRECE", "GRENOUILLE", "GRIPPE", "GRIS", "GROS", "GROUPE", "GUITARE", "HASARD", "HAUT", "HELICOPTERE", "HERBE", "HEUREUX", "HISTOIRE", "HIVER", "HOTEL", "HUGO", "HUILE", "HUMIDE", "HUMOUR", "INDICE", "INTERNET", "INVITER", "ITALIE", "JACQUES", "JAMBE", "JAMBON", "JARDIN", "JAUNE", "JEAN", "JEANNE", "JET", "JEU", "JOGGING", "JOUR", "JOURNAL", "JUPITER", "KILO", "KIWI", "LAINE", "LAIT", "LANGUE", "LAPIN", "LATIN", "LAVER", "LECTEUR", "LEGER", "LENT", "LETTRE", "LIEN", "LIGNE", "LINGE", "LION", "LIT", "LIVRE", "LOI", "LONG", "LOUIS", "LOUP", "LUMIERE", "LUNDI", "LUNE", "LUNETTE", "MACHINE", "MACHO", "MAIN", "MAISON", "MAITRESSE", "MAL", "MALADIE", "MAMAN", "MAMMOUTH", "MANGER", "MARAIS", "MARC", "MARCHE", "MARIAGE", "MARIE", "MARIEE", "MARQUE", "MARSEILLE", "MASSE", "MER", "MESSE", "METRE", "METRO", "MIAOU", "MICRO", "MIEUX", "MILLE", "MINE", "MIROIR", "MODERNE", "MOITIE", "MONDE", "MONSTRE", "MONTAGNE", "MONTRE", "MORT", "MOTEUR", "MOTO", "MOU", "MOUCHE", "MOULIN", "MOUSTACHE", "MOUTON", "MUR", "MUSCLE", "MUSIQUE", "MYSTERE", "NAGE", "NATURE", "NEIGE", "NEUTRE", "NEW YORK", "NEZ", "NID", "NINJA", "NIVEAU", "NOEL", "NOEUD", "NOIR", "NOUS", "NUAGE", "NUIT", "NUMERO", "OEIL", "OEUF", "OISEAU", "OLYMPIQUE", "OMBRE", "ONGLE", "ORAL", "ORANGE", "ORDINATEUR", "ORDRE", "ORDURE", "OREILLE", "ORGANE", "ORGUEIL", "OURS", "OUTIL", "OUVERT", "OVALE", "PAIN", "PALAIS", "PANNEAU", "PANTALON", "PANTIN", "PAPA", "PAPIER", "PAPILLON", "PARADIS", "PARC", "PARIS", "PAROLE", "PARTIE", "PASSE", "PATE", "PATIN", "PATTE", "PAUL", "PAYER", "PECHE", "PEINTURE", "PENDULE", "PENSER", "PERSONNE", "PETIT", "PEUR", "PHILOSOPHE", "PHOTO", "PHRASE", "PIANO", "PIECE", "PIED", "PIERRE", "PILE", "PILOTE", "PINCE", "PIOCHE", "PION", "PIRATE", "PIRE", "PISCINE", "PLACE", "PLAFOND", "PLAGE", "PLAIE", "PLAN", "PLANCHE", "PLANETE", "PLANTE", "PLASTIQUE", "PLAT", "PLAT", "PLOMB", "PLONGER", "PLUIE", "POCHE", "POETE", "POIDS", "POING", "POINT", "POIVRE", "POLICE", "POLITIQUE", "POLLEN", "POLO", "POMME", "POMPE", "PONT", "POPULATION", "PORT", "PORTE", "PORTEFEUILLE", "POSITIF", "POSTE", "POUBELLE", "POULE", "POUPEE", "POUSSER", "POUSSIERE", "POUVOIR", "PREHISTOIRE", "PREMIER", "PRESENT", "PRESSE", "PRIER", "PRINCESSE", "PRISE", "PRIVE", "PROFESSEUR", "PSYCHOLOGIE", "PUBLIC", "PULL", "PUNK", "PUZZLE", "PYJAMA", "QUATRE", "QUINZE", "RACE", "RADIO", "RAISIN", "RAP", "RAYE", "RAYON", "REFLECHIR", "REINE", "REPAS", "REPTILE", "REQUIN", "REVE", "RICHE", "RIDEAU", "RIEN", "RIRE", "ROBINET", "ROCHE", "ROI", "ROND", "ROSE", "ROUE", "ROUGE", "ROUILLE", "ROUX", "RUSSIE", "SABLE", "SABRE", "SAC", "SAIN", "SAISON", "SALE", "SALLE", "SALUT", "SAMU", "SANDWICH", "SANG", "SAPIN", "SATELLITE", "SAUMON", "SAUT", "SAVOIR", "SCHTROUMPF", "SCIENCE", "SCOUT", "SEC", "SEINE", "SEL", "SEPT", "SERPENT", "SERRER", "SEXE", "SHAMPOOING", "SIECLE", "SIEGE", "SIESTE", "SILHOUETTE", "SIRENE", "SKI", "SOLEIL", "SOMMEIL", "SON", "SONNER", "SORCIERE", "SOURD", "SOURIS", "SPORT", "STAR", "STATION", "STYLO", "SUR", "SURFACE", "SUSHI", "SWING", "TABLEAU", "TACHE", "TAILLE", "TANTE", "TAPIS", "TARD", "TAXI", "TELEPHONE", "TELEVISION", "TEMPLE", "TEMPS", "TENNIS", "TETE", "THE", "TIGRE", "TINTIN", "TISSU", "TITRE", "TITRE", "TOAST", "TOILETTE", "TOKYO", "TOMBE", "TON", "TOP", "TOUCHE", "TOUJOURS", "TOUR", "TOURNOI", "TOUT", "TRACE", "TRAIN", "TRAINER", "TRANSPORT", "TRAVAIL", "TRESOR", "TRIANGLE", "TRISTE", "TRONE", "TROUPEAU", "TSAR", "TUBE", "TUER", "TUER", "TUPPERWARE", "TUYAU", "TWITTER", "TYPE", "UNIVERSITE", "VACHE", "VACHE", "VAGUE", "VAISSELLE", "VALEUR", "VER", "VERDICT", "VERRE", "VERS", "VERT", "VESTE", "VIANDE", "VIDE", "VIE", "VIEUX", "VILLE", "VIN", "VINGT", "VIOLON", "VIPERE", "VISION", "VITE", "VIVE", "VOEU", "VOILE", "VOISIN", "VOITURE", "VOL", "VOLUME", "VOTE", "VOULOIR", "VOYAGE", "ZEN", "ZERO", "ZODIAQUE", "ZONE", "ZOO"]
+<<<<<<< HEAD
 words_codeNamesDuo = [ 'OASIS', 'VODKA', 'CRIQUET', 'CHÈVRE', 'MOMIE', 'LOUP', 'PONT', 'POINTE', 'TRONC', 'PORTUGAL', 'SREVICE', 'VIKING',
 						'RIO', 'CAVE', 'TATOUAGE', 'JUGE', 'NEZ', 'CAGE', 'DÉCEMBRE', 'GARE', 'MANCHOT', 'INTÉRÊT', 'AMANT', 'CHAMPION', 'TROLL', 'CAPITAINE',
 						'POUMON', 'COUR', 'OURS', 'VANNE', 'PAYS', 'PRISON', 'MARGUERITE', 'CUISINIÈRE', 'BAIN', 'MODÈLE', 'DÉFENSE', 'SÉJOUR', 'ÉTIQUETTE',
@@ -23,7 +24,7 @@ words_codeNamesDuo = [ 'OASIS', 'VODKA', 'CRIQUET', 'CHÈVRE', 'MOMIE', 'LOUP', 
 						'PACIFIQUE', 'PANDA', 'IRAK', 'MEDECINE', 'CABANE', 'DOUCHE', 'CLOU', 'CAMP', 'RIVIÈRE', 'DIAMANT', 'BELGE', 'ÉQUATEUR', 'THÉ', 'SUÈDE', 'ELFE',
 						'BRAS', 'DEMANDE', 'LIMONADE', 'ANCRE', 'SALADE', 'ACCENT', 'MÉDITERRANÉE', 'CRÈME', 'PLASTIQUE', 'TORTUE', 'MAISON', 'SAPIN', 'PLAQUETTE', 'TAILLE',
 						'LUSTRE', 'CERISE', 'PORCELAINE', 'FROMAGE', 'BOUCLE', 'RÊVE', 'MIROIR', 'CARREFOUR', 'COLONIE', 'MAGICIEN', 'OREILLER', 'VEINE', 'LAME', 'OSEILLE',
-						'DRAPEAU', 'LAS VEGAS', 'SALSA', 'ALEXANDIE', 'PREMIER', 'CHARLEMAGNE', 'GUITARE', 'POMPIER', 'ANGLE', 'COCON', 'SÉRIE', 'SERVEUR', 'THÉATRE', 
+						'DRAPEAU', 'LAS VEGAS', 'SALSA', 'ALEXANDRIE', 'PREMIER', 'CHARLEMAGNE', 'GUITARE', 'POMPIER', 'ANGLE', 'COCON', 'SÉRIE', 'SERVEUR', 'THÉATRE', 
 						'BRONZE', 'ANNIVERSAIRE', 'PIQUE', 'ADRESSE', 'BRETAGNE', 'CUILLÈRE', 'ASIE', 'MAÎTRE', 'CHAMPIGNON', 'PLATINE', 'HERCULE', 'MOSCOU', 'ROUTE',
 						'NAVET', 'ARRÊT', 'CHENILLE', 'VÉNUS', 'ÉLASTIQUE', 'GARDIEN', 'FACE', 'VENISE', 'ÉCRAN', 'BLIZZARD', 'DÉESSE', 'SHERLOCK', 'FLAMME', 'QUART', 'BRÉSIL',
 						'SYDNEY', 'TULIPE' , 'CIRCUIT', 'FOURCHE', 'CAMION', 'PIZZA', 'CERVEAU', 'FORCE', 'MOUTON', 'MATIN', 'MINOTAURE', 'OFFRE', 'PARADIS', 'SALON', 'FLÈCHE',
@@ -100,19 +101,23 @@ function callPopup(){
 	if (confirm("Etes vous sur de vouloir arreter la partie ?")) reset();
 }
 
+var readyToReset = 0;
+
 function resetFirebase(){
 	updateGame = {};
 	updateGame['game'] = null;
-	firebase.database().ref().update(updateGame);	
+	firebase.database().ref().update(updateGame).then(reload);	
 	var updateGame = {};
 	updateGame['game/on'] = 0;
 	updateGame['game/nbClues'] = 0;
-	firebase.database().ref().update(updateGame);	
+	updateGame['game/nbChats'] = 0;
+	firebase.database().ref().update(updateGame).then(reload);	
 	// callback();
 }
 
 function reload(){	
-	location.reload();
+	readyToReset++;
+	if (readyToReset == 2) location.reload();
 }
 
 function reset(){
@@ -135,7 +140,7 @@ clueTxtBox.addEventListener("keydown", function (e) {
     		startGame(1);
     		clueTxtBox.value = '';
     	}
-        else sendClue();
+        else parseClue();
     }
 });
 
@@ -341,8 +346,9 @@ function addClue(div,txt,newClue){
 	div.appendChild(p);
 }
 
-function displayClues(nbClues,cluesDict,nbNewClues){
-	var div = document.getElementById('cluelist');
+function displayCluesAndChats(htmleltname,nbClues,cluesDict,nbNewClues){
+	// console.log('in displayClues');
+	var div = document.getElementById(htmleltname);
 	div.innerHTML = "";
 	for (var i=nbClues-1; i>=0; i--){
 		addClue(div,cluesDict[i],nbClues-i<=nbNewClues);
@@ -351,21 +357,8 @@ function displayClues(nbClues,cluesDict,nbNewClues){
 
 function updateBoard(){	
 	console.log("In updateBoard");
-	var nbDisplayedClues = document.getElementById("cluelist").childElementCount;
-	firebase.database().ref('game/nbClues').once('value').then(function(snapshot) {
-		var nbClues = snapshot.val();
-		if (nbDisplayedClues != nbClues){
-			clues = {};
-			var count = 0;
-			firebase.database().ref('game/clues').once('value').then(function(snapshot){
-				snapshot.forEach(function(child){
-					clues[child.key] = child.val();
-					count ++;
-					if (count == nbClues) displayClues(nbClues,clues,count-nbDisplayedClues);
-				})
-			})
-		}
-	})
+	updateCluesAndChat("cluelist",'nbClues','clues');
+	updateCluesAndChat("chatlist",'nbChats','chats');
 	firebase.database().ref('game/words').once('value').then(function(snapshot){
 			guessed_list = [];
 		snapshot.forEach(function(child){
@@ -378,16 +371,41 @@ function updateBoard(){
 	})
 }
 
-function displayEndOfGameMsg(msg){
+
+function updateCluesAndChat(htmleltname,firebaseNbKey,firebaseKey){
+	var nbDisplayedClues = document.getElementById(htmleltname).childElementCount;
+	// console.log('updateCluesAndChat '+htmleltname,firebaseNbKey,firebaseKey);
+	firebase.database().ref('game/'+firebaseNbKey).once('value').then(function(snapshot) {
+		var nbClues = snapshot.val();
+		// console.log(firebaseKey+': displayed = '+nbDisplayedClues+', in firebase = '+nbClues);
+		if (nbDisplayedClues != snapshot.val()){
+			clues = {};
+			var count = 0;
+			firebase.database().ref('game/'+firebaseKey).once('value').then(function(snapshot){
+				snapshot.forEach(function(child){
+					clues[child.key] = child.val();
+					count ++;
+					if (count == nbClues) displayCluesAndChats(htmleltname,nbClues,clues,count-nbDisplayedClues);
+				})
+			})
+		}
+	})
+}
+
+function displayEndOfGameMsg(won){
 	var windiv = document.getElementById('end');
 	windiv.style.display = 'block';
 	var endmsg = document.getElementById('end');
-	endmsg.innerHTML = msg;
+	var msg, img;
+	if (won) img = 'fireworks.png';
+	else img = 'skullhead.jpg';
+	var htmlimg = '<img src="'+img+'"/>';
+	endmsg.innerHTML = htmlimg;
 }
 
 function checkGuessedWords(w){
 	if (guessed_list.indexOf(w) == -1) guessed_list.push(w);
-	if (guessed_list.length == TO_GUESS) displayEndOfGameMsg('Vous avez gagné !!!');
+	if (guessed_list.length == TO_GUESS) displayEndOfGameMsg(won=1);
 }
 
 function updateWordStatus(w,status,numplayer){
@@ -398,7 +416,7 @@ function updateWordStatus(w,status,numplayer){
 	}
 	else if (status == "lost") {
 		button.style.background = colorsDict['lost'];
-		displayEndOfGameMsg('Vous avez perdu ...');
+		displayEndOfGameMsg(won=0);
 	}
 	else if (status == "tried") {
 		if (numplayer == player) button.innerHTML = "X - "+w+" - X" ;
@@ -406,18 +424,53 @@ function updateWordStatus(w,status,numplayer){
 	}
 }
 
-function sendClue(){
+function wordCount(str) { 
+  c = str.split(" ").length;
+  if (c==1) c2 = str.split(",").length;
+  return c || c2;
+}
+
+function getSecondWord(str){
+	s = str.split(" ");
+	if (s.length == 2) return s[1];
+	s2 = str.split(",");
+	if (s2.length == 2) return s2[1];
+	else return false;
+}
+
+function isNumber(str){
+	str = str.toLowerCase();
+	var numbers = ['un', 'deux', 'trois', 'quatre', 'cinq', 'six', '1', '2', '3', '4', '5', '6'];
+	if (numbers.indexOf(str)!=-1) return true;
+	else return false;
+}
+
+function parseClue(clue){
 	var clueElt = document.getElementById("clue");
 	var clue = clueElt.value;	
 	clueElt.value = "";
 	console.log(clue);
 
-	firebase.database().ref('game/nbClues').once('value').then(function(snapshot) {
-		var nbClues = snapshot.val();
-		nbClues ++;
+	if (wordCount(clue)==2) {
+		secondWord = getSecondWord(clue);
+		if (isNumber(secondWord)){
+			sendClueAndChat(clue,'nbClues','clues');
+		}
+		else sendClueAndChat(clue,'nbChats','chats');
+	}
+	else sendClueAndChat(clue,'nbChats','chats');
+
+}
+
+
+function sendClueAndChat(str,firebaseNbKey,firebaseKey){
+	console.log('in send sendClueAndChat');
+	firebase.database().ref('game/'+firebaseNbKey).once('value').then(function(snapshot) {
+		// var nbClues = snapshot.val();
+		// nbClues ++;
 		var updateGame = {};
-		updateGame['game/clues/'+(nbClues-1)] = clue;
-		updateGame['game/nbClues'] = nbClues;
+		updateGame['game/'+firebaseKey+'/'+(snapshot.val())] = str;
+		updateGame['game/'+firebaseNbKey] = snapshot.val()+1;
 		firebase.database().ref().update(updateGame).then(updateBoard());
 	})
 }
