@@ -108,15 +108,26 @@ function callPopup(){
 var readyToReset = 0;
 
 function resetFirebase(){
-	updateGame = {};
-	updateGame['game'] = null;
-	firebase.database().ref().update(updateGame).then(reload);	
-	var updateGame = {};
-	updateGame['game/on'] = 0;
-	updateGame['game/nbClues'] = 0;
-	updateGame['game/nbChats'] = 0;
-	firebase.database().ref().update(updateGame).then(reload);	
+	firebase.database().ref('game/on').once('value').then(function(snapshot) {
+		var gameval = parseInt(snapshot.val());
+		if (gameval == 2){
+			console.log('Gameval is 2, real reset')
+			updateGame = {};
+			updateGame['game'] = null;
+			firebase.database().ref().update(updateGame).then(reload);	
+			var updateGame = {};
+			updateGame['game/on'] = 0;
+			updateGame['game/nbClues'] = 0;
+			updateGame['game/nbChats'] = 0;
+			firebase.database().ref().update(updateGame).then(reload);	
+		}
+		else {
+			console.log('Gameval is not 2, fake reset')
+			readyToReset++;
+			reload();
+		}
 	// callback();
+	})
 }
 
 function reload(){	
@@ -181,6 +192,9 @@ function startGame(refreshplayer0=0){
 				player = 0;
 				opponent = 1;
 			}
+			var updateOn = {};
+			updateOn['game/on'] = 2;
+			firebase.database().ref().update(updateOn);
 			firebase.database().ref('game/words').once('value').then(function(snapshot){
 				snapshot.forEach(function(child){
 					if (child.key != "on") {
